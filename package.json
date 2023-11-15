@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "@rsbuild/core": "^0.0.23",
+    "@rsbuild/shared": "^0.0.23"
+  },
+  "dependencies": {
+    "esbuild": "^0.19.5"
+  }
+}
