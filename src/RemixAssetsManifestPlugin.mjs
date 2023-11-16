@@ -1,24 +1,15 @@
-import {toManifest, writeManifest} from "./manifest.js";
-import type { Compiler, Compilation } from "webpack";
+import {toManifest, writeManifest} from "./manifest.mjs";
 
-interface RemixConfig {
-  entryClientFilePath: string;
-  assetsBuildDirectory: string;
-  routes: Record<string, {file: string}>;
-  appDirectory: string;
-}
 
 class RemixAssetsManifestPlugin {
-  private remixConfig: RemixConfig;
-
-  constructor(remixConfig: RemixConfig) {
+  constructor(remixConfig) {
     this.remixConfig = remixConfig;
   }
 
-  apply(compiler: Compiler) {
+  apply(compiler) {
     compiler.hooks.emit.tapPromise(
       "RemixAssetsManifest",
-      async (compilation: Compilation) => {
+      async (compilation) => {
         const stats = compilation.getStats();
         const manifest = await toManifest(this.remixConfig, stats);
         writeManifest(this.remixConfig, manifest);

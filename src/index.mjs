@@ -1,21 +1,14 @@
 // Assuming you have the '@rsbuild/core' module installed in your project
 // If not, you need to install it using npm or yarn
-import type { RsbuildPlugin } from '@rsbuild/core';
 import {setConfig} from '@rsbuild/shared';
-import { getRoutes } from './get-routes';
-import { RemixAssetsManifestPlugin } from './RemixAssetsManifestPlugin';
-// Define the types for api, remixOptions, config, and options
-type ApiType = any; // Replace 'any' with the actual type when you know it
-type RemixOptionsType = any; // Replace 'any' with the actual type when you know it
-type ConfigType = { entry: any }; // Replace 'any' with the actual type when you know it
-type OptionsType = any; // Replace 'any' with the actual type when you know it
-export type FooPugOptions = {};
+import { getRoutes } from './get-routes.mjs';
+import { RemixAssetsManifestPlugin } from './RemixAssetsManifestPlugin.mjs';
 
-export const pluginFoo = (remixOptions: RemixOptionsType = {}): RsbuildPlugin => ({
+export const pluginFoo = (remixOptions = {}) => ({
   name: 'plugin-foo',
 
-  setup(api: ApiType, options) {
-    api.modifyRspackConfig(async (config: ConfigType, options: OptionsType) => {
+  setup(api, options) {
+    api.modifyRspackConfig(async (config, options) => {
       const remixConfig = await remixOptions;
       config.entry = {
         'entry.client': remixConfig.entryClientFilePath,
