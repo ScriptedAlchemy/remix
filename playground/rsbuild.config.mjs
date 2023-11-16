@@ -4,7 +4,12 @@ import { readConfig } from '@remix-run/dev/dist/config.js';
 const remixConfig = readConfig();
 export default defineConfig({
   source:{
-    entry: {}
+    entry: {},
+  },
+  output:{
+    distPath:{
+      root: remixConfig.assetsBuildDirectory,
+    },
   },
   plugins: [pluginFoo(remixConfig)],
 });
