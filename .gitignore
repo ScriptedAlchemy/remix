@@ -2,3 +2,4 @@ node_modules
 dist
 playground/public/build
 .idea
+/playground/build/
