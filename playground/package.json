@@ -5,17 +5,21 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "npx rsbuild dev",
-    "build": "npx rsbuild build"
+    "webapck": "rspack --mode=development --config webpack.browser.js & rspack --mode=development --config webpack.server.js",
+    "build": "node ./build.mjs"
   },
   "devDependencies": {
     "@rsbuild/core": "^0.0.23",
-    "@types/node": "^20.9.0"
+    "@types/node": "^20.9.0",
+    "ts-node": "^10.9.1"
   },
   "dependencies": {
     "@remix-run/dev": "^2.2.0",
     "@remix-run/node": "^2.2.0",
     "@remix-run/react": "^2.2.0",
     "@rsbuild/shared": "^0.0.23",
+    "@rspack/cli": "^0.3.13",
+    "@rspack/core": "^0.3.13",
     "isbot": "latest"
   }
 }

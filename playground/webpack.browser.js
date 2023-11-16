@@ -1,7 +1,6 @@
 import * as path from "node:path";
 
 import {readConfig} from "@remix-run/dev/dist/config.js";
-import {EsbuildPlugin} from "esbuild-loader";
 import {toManifest, writeManifest} from "./utils/manifest.js";
 import {getRoutes,routeSet} from './utils/get-routes.js'
 const mode =
@@ -57,7 +56,6 @@ const config = {
       chunks: "async",
     },
     minimize: mode === "production",
-    // minimizer: [new EsbuildPlugin({target: "es2019"})],
   },
   plugins: [
     {

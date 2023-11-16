@@ -3,5 +3,8 @@ import { pluginFoo } from '../src';
 import { readConfig } from '@remix-run/dev/dist/config.js';
 const remixConfig = readConfig();
 export default defineConfig({
+  source:{
+    entry: {}
+  },
   plugins: [pluginFoo(remixConfig)],
 });
