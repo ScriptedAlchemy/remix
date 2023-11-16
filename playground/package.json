@@ -9,7 +9,7 @@
     "build": "node ./build.mjs"
   },
   "devDependencies": {
-    "@rsbuild/core": "^0.0.23",
+    "@rsbuild/core": "^0.0.24",
     "@types/node": "^20.9.0",
     "ts-node": "^10.9.1"
   },
@@ -17,7 +17,7 @@
     "@remix-run/dev": "^2.2.0",
     "@remix-run/node": "^2.2.0",
     "@remix-run/react": "^2.2.0",
-    "@rsbuild/shared": "^0.0.23",
+    "@rsbuild/shared": "^0.0.24",
     "@rspack/cli": "^0.3.13",
     "@rspack/core": "^0.3.13",
     "isbot": "latest"

@@ -17,7 +17,6 @@ export const pluginFoo = (remixOptions = {}) => ({
         setConfig(config,'output.distPath.root', path.basename(remixConfig.serverBuildPath));
       } else {
         setConfig(config, 'output.distPath.root',remixConfig.relativeAssetsBuildDirectory);
-        console.log(config.output.distPath);
       }
 
       return config
@@ -31,7 +30,6 @@ export const pluginFoo = (remixOptions = {}) => ({
         };
         setConfig(config, 'target', 'web');
         setConfig(config, 'name', 'browser');
-        // setConfig(config, 'output.path', remixConfig.assetsBuildDirectory);
         setConfig(config, 'output.publicPath', 'auto');
         setConfig(config, 'output.module', true);
         setConfig(config, 'output.library', { type: 'module' });

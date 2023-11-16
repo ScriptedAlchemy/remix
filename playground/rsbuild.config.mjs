@@ -16,9 +16,6 @@ const defaultDistPath = {
   worker: 'worker',
 };
 export default defineConfig({
-  source:{
-    entry: {},
-  },
   // output:{
   //   distPath:defaultDistPath
   // },

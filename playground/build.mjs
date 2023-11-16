@@ -10,8 +10,6 @@ const start = async () => {
     target: ['node'],
     rsbuildConfig: config,
   })
-  client.addPlugins(config.plugins);
-  server.addPlugins(config.plugins);
   await client.build();
   // await server.build();
 };
