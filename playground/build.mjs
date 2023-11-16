@@ -6,12 +6,12 @@ const start = async () => {
     target: ['web'],
     rsbuildConfig: config,
   })
-  // const server = await createRsbuild({
-  //   target: ['node'],
-  //   rsbuildConfig: config,
-  // })
+  const server = await createRsbuild({
+    target: ['node'],
+    rsbuildConfig: config,
+  })
   client.addPlugins(config.plugins);
-  // server.addPlugins(config.plugins);
+  server.addPlugins(config.plugins);
   await client.build();
   // await server.build();
 };

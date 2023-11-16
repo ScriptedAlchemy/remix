@@ -12,11 +12,15 @@ export const pluginFoo = (remixOptions = {}) => ({
     api.modifyRsbuildConfig(async (config, options) => {
       console.log(config,options)
       const remixConfig = await remixOptions;
+      console.log(remixConfig)
       if(api.context.target.includes('node') || api.context.target.includes('async-node')){
-        setConfig(config,'output.distPath.root', 'build');
+        setConfig(config,'output.distPath.root', path.basename(remixConfig.serverBuildPath));
       } else {
-        setConfig(config, 'output.distPath.root', path.basename(remixConfig.assetsBuildDirectory));
+        setConfig(config, 'output.distPath.root',remixConfig.relativeAssetsBuildDirectory);
+        console.log(config.output.distPath);
       }
+
+      return config
     })
     api.modifyRspackConfig(async (config, options) => {
       const remixConfig = await remixOptions;
@@ -27,7 +31,7 @@ export const pluginFoo = (remixOptions = {}) => ({
         };
         setConfig(config, 'target', 'web');
         setConfig(config, 'name', 'browser');
-        setConfig(config, 'output.path', remixConfig.assetsBuildDirectory);
+        // setConfig(config, 'output.path', remixConfig.assetsBuildDirectory);
         setConfig(config, 'output.publicPath', 'auto');
         setConfig(config, 'output.module', true);
         setConfig(config, 'output.library', { type: 'module' });
