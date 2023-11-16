@@ -1,21 +1,21 @@
 {
-  "version": "d53355f0ebe7d85c",
-  "url": "/build/manifest-D53355F0EBE7D85C.js",
+  "version": "e477ad1efe528406",
+  "url": "/build/manifest-E477AD1EFE528406.js",
   "entry": {
     "imports": [
-      "/build/vendors~node_modules_remix-run_react_dist_esm_index_js~node_modules_rsbuild_core_dist_client_~929b44-b4f0c0429f1b43f1.js",
-      "/build/entry.client-83c74b05f9f2714f.js",
-      "/build/root-9d9bbfae03f21fa3.js"
+      "/build/709-593ce8ff8c8e9341.js",
+      "/build/entry.client-ea2dac46b532c153.js",
+      "/build/root-b147fdbd4841cca8.js"
     ],
-    "module": "/build/entry.client-83c74b05f9f2714f.js"
+    "module": "/build/entry.client-ea2dac46b532c153.js"
   },
   "routes": {
     "root": {
       "id": "root",
       "path": "",
-      "module": "/build/root-9d9bbfae03f21fa3.js",
+      "module": "/build/root-b147fdbd4841cca8.js",
       "imports": [
-        "/build/vendors~node_modules_remix-run_react_dist_esm_index_js~node_modules_rsbuild_core_dist_client_~929b44-b4f0c0429f1b43f1.js"
+        "/build/709-593ce8ff8c8e9341.js"
       ],
       "hasAction": false,
       "hasLoader": true,
@@ -26,9 +26,9 @@
       "id": "routes/_index",
       "parentId": "root",
       "index": true,
-      "module": "/build/routes/_index-3b700723e89c1649.js",
+      "module": "/build/routes/_index-da28b59fc8529ab2.js",
       "imports": [
-        "/build/vendors~node_modules_remix-run_react_dist_esm_index_js~node_modules_rsbuild_core_dist_client_~929b44-b4f0c0429f1b43f1.js"
+        "/build/709-593ce8ff8c8e9341.js"
       ],
       "hasAction": false,
       "hasLoader": true,

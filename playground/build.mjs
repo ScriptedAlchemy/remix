@@ -1,13 +1,13 @@
 import { createRsbuild } from '@rsbuild/core';
 import * as path from 'path';
+import config from './rsbuild.config.mjs';
 const start = async () => {
   const rsbuild = await createRsbuild({
     target: ['web'],
-    configPath: path.resolve('./rsbuild.config.ts'),
+    rsbuildConfig: config,
   })
-  const cfg = config
-  await rsbuild.build(cfg);
-  console.log(rsbuild)
+  rsbuild.addPlugins(config.plugins);
+  await rsbuild.build();
 };
 
 start();
