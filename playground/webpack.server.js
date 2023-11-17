@@ -11,7 +11,7 @@ const mode =
 const remixConfig = await readConfig();
 const isModule = remixConfig.serverModuleFormat === 'esm';
 
-
+//TODO: add 
 if (!isModule) {
   if (!fs.existsSync('./build')) {
     fs.mkdirSync('./build');
@@ -46,9 +46,6 @@ const config = {
     })
   ],
   output: {
-    environment: {
-      module: isModule
-    },
     filename: path.basename(remixConfig.serverBuildPath),
     library: { type: isModule ? 'module' : 'commonjs' },
     chunkFormat: isModule ? 'module' : 'commonjs',

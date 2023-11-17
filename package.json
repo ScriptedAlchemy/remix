@@ -1,9 +1,11 @@
 {
+  "type:": "module",
   "devDependencies": {
     "@rsbuild/core": "^0.0.24",
     "@rsbuild/shared": "^0.0.24"
   },
   "dependencies": {
-    "esbuild": "^0.19.5"
+    "esbuild": "^0.19.5",
+    "webpack-node-externals": "^3.0.0"
   }
 }
