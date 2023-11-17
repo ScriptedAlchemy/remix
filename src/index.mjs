@@ -15,6 +15,21 @@ const serverBuildModule = './.cache/server-build.js';
 export const pluginFoo = (remixOptions = {}) => ({
   name: 'plugin-foo',
   setup(api, options) {
+    api.onAfterBuild(async (config,options) => {
+      const remixConfig = await remixOptions;
+      const isModule = remixConfig.serverModuleFormat === 'esm';
+
+      if (api.context.target.includes('node') || api.context.target.includes('async-node')) {
+
+        if (!isModule) {
+          const dirname = path.dirname(remixConfig.serverBuildPath)
+          if (!fs.existsSync(dirname)) {
+            fs.mkdirSync(dirname);
+          }
+          fs.writeFileSync(path.join(dirname,'package.json'), JSON.stringify({ type: 'commonjs' }));
+        }
+      }
+    });
     api.modifyRsbuildConfig(async (config, options) => {
       const remixConfig = await remixOptions;
       if (api.context.target.includes('node') || api.context.target.includes('async-node')) {
@@ -41,7 +56,7 @@ export const pluginFoo = (remixOptions = {}) => ({
         setConfig(config, 'externalsType', 'module');
         setConfig(config, 'target', 'web');
         setConfig(config, 'name', 'browser');
-        setConfig(config, 'output.publicPath', 'auto');
+        setConfig(config, 'output.publicPath', remixConfig.publicPath || 'auto');
         setConfig(config, 'output.module', true);
         setConfig(config, 'output.library', { type: 'module' });
         setConfig(config, 'output.chunkFormat', 'module');
@@ -53,17 +68,18 @@ export const pluginFoo = (remixOptions = {}) => ({
         setConfig(config, 'experiments.outputModule', true);
         config.plugins.push(new RemixAssetsManifestPlugin(remixConfig));
       } else {
+        const ext = isModule ? 'mjs' : 'js';
         setConfig(config, 'name', 'server');
-        setConfig(config, 'experiments.asyncDebAssembly', false);
-        setConfig(config, 'output.filename', path.basename(remixConfig.serverBuildPath));
+        setConfig(config, 'output.filename', path.basename(remixConfig.serverBuildPath, path.extname(remixConfig.serverBuildPath)) + '.' + ext);
         setConfig(config, 'output.library', { type: isModule ? 'module' : 'commonjs' });
+        setConfig(config, 'output.libraryTarget', isModule ? 'module' : 'commonjs2' );
         setConfig(config, 'output.chunkFormat', isModule ? 'module' : 'commonjs');
         setConfig(config, 'output.chunkLoading', isModule ? 'import' : undefined);
         setConfig(config, 'output.module', isModule);
         setConfig(config, 'output.publicPath', remixConfig.publicPath);
         setConfig(config, 'output.assetModuleFilename', '_assets/[name]-[contenthash][ext]');
-        setConfig(config, 'output.cssChunkFilename', '_assets/[name]-[contenthash][ext]');
-        setConfig(config, 'output.chunkFilename', '[name]-[chunkhash].js');
+        setConfig(config, 'output.cssChunkFilename', '_assets/[name]-[contenthash].css');
+        setConfig(config, 'output.chunkFilename', '[name]-[chunkhash].' + ext);
         setConfig(config, 'externals', [
           nodeExternals({
             allowlist: [/^@remix-run\/dev/],

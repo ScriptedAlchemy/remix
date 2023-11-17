@@ -1,7 +1,7 @@
 
 const config = {
   server: "./server.mjs",
-  serverModuleFormat: 'cjs'
+  serverModuleFormat: 'esm'
 };
 
 export default config;

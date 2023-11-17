@@ -16,15 +16,7 @@ const start = async () => {
   })
   await client.build();
   await server.build();
-  const isModule = packageJSon.type === 'module'
-  if (remixConfig.serverModuleFormat !== 'esm') {
-    if (!fs.existsSync('./build')) {
-      fs.mkdirSync('./build');
-    }
-    fs.writeFileSync('./build/package.json', JSON.stringify({ type: 'commonjs' }));
-  }
-  const sr = await import('./build/index.js')
-  console.log(sr)
+  const sr = await import('./build/index.mjs')
 };
 
 start();
