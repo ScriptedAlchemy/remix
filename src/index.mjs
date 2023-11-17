@@ -77,7 +77,6 @@ export const pluginFoo = (remixOptions = {}) => ({
         setConfig(config, 'externalsPresets', { node: true });
 
         if (isModule) setConfig(config, 'experiments.outputModule', isModule);
-console.log(remixConfig)
         config.entry = remixConfig.serverEntryPoint || serverBuildModule;
 
 
@@ -85,5 +84,6 @@ console.log(remixConfig)
       }
       return config;
     });
+
   }
 });
