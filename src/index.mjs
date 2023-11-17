@@ -1,5 +1,4 @@
-// Assuming you have the '@rsbuild/core' module installed in your project
-// If not, you need to install it using npm or yarn
+// Import necessary modules
 import { setConfig } from '@rsbuild/shared';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -9,8 +8,10 @@ import { RemixAssetsManifestPlugin } from './RemixAssetsManifestPlugin.mjs';
 import { createServerBuildEntry } from '../playground/utils/server-build-entry.js';
 import nodeExternals from 'webpack-node-externals';
 
+// Define server build module
 const serverBuildModule = './.cache/server-build.js';
 
+// Export pluginFoo
 export const pluginFoo = (remixOptions = {}) => ({
   name: 'plugin-foo',
   setup(api, options) {
@@ -23,7 +24,6 @@ export const pluginFoo = (remixOptions = {}) => ({
         const manifest = getManifest();
         const serverBuildEntry = createServerBuildEntry(remixConfig, manifest);
         fs.writeFileSync(serverBuildModule, serverBuildEntry, 'utf8');
-
       } else {
         setConfig(config, 'output.distPath.root', remixConfig.assetsBuildDirectory);
       }
@@ -53,9 +53,7 @@ export const pluginFoo = (remixOptions = {}) => ({
         setConfig(config, 'experiments.outputModule', true);
         config.plugins.push(new RemixAssetsManifestPlugin(remixConfig));
       } else {
-
         setConfig(config, 'name', 'server');
-
         setConfig(config, 'experiments.asyncDebAssembly', false);
         setConfig(config, 'output.filename', path.basename(remixConfig.serverBuildPath));
         setConfig(config, 'output.library', { type: isModule ? 'module' : 'commonjs' });
@@ -66,7 +64,6 @@ export const pluginFoo = (remixOptions = {}) => ({
         setConfig(config, 'output.assetModuleFilename', '_assets/[name]-[contenthash][ext]');
         setConfig(config, 'output.cssChunkFilename', '_assets/[name]-[contenthash][ext]');
         setConfig(config, 'output.chunkFilename', '[name]-[chunkhash].js');
-
         setConfig(config, 'externals', [
           nodeExternals({
             allowlist: [/^@remix-run\/dev/],
@@ -75,15 +72,10 @@ export const pluginFoo = (remixOptions = {}) => ({
         ]);
         setConfig(config, 'externalsType', isModule ? 'module' : undefined);
         setConfig(config, 'externalsPresets', { node: true });
-
         if (isModule) setConfig(config, 'experiments.outputModule', isModule);
         config.entry = remixConfig.serverEntryPoint || serverBuildModule;
-
-
-
       }
       return config;
     });
-
   }
 });

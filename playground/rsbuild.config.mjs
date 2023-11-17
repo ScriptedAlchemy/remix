@@ -7,3 +7,4 @@ const remixConfig = readConfig();
 export default defineConfig({
   plugins: [pluginFoo(remixConfig), pluginReact()],
 });
+

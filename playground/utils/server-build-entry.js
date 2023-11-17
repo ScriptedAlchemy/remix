@@ -42,3 +42,4 @@ export function createServerBuildEntry(config, manifest) {
   export const publicPath = ${JSON.stringify(config.publicPath)};
 `;
 }
+``
