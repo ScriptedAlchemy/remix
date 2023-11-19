@@ -15,12 +15,18 @@ const start = async () => {
     target: ['node'],
     rsbuildConfig: config
   });
-  await client.build();
-  await server.build();
-  if(remixConfig.serverModuleFormat === 'esm') {
-    const sr = await import('./build/index.mjs');
+  const { serverMode, browserNodeBuiltinsPolyfill } = remixConfig; // Set the mode to the remix config mode
+  if (process.env.NODE_ENV === 'production') {
+    await client.build();
+    await server.build();
+    if (remixConfig.serverModuleFormat === 'esm') {
+      const sr = await import('./build/index.mjs');
+    } else {
+      const sr = await import('./build/index.js');
+    }
   } else {
-    const sr = await import('./build/index.js');
+    await client.startDevServer();
+    await server.startDevServer();
   }
 };
 

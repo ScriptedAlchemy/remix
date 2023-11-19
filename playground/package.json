@@ -4,9 +4,10 @@
   "type": "module",
   "version": "0.7.0",
   "scripts": {
-    "dev": "npx rsbuild build",
+    "dev1": "npx rsbuild build",
     "webapck": "rspack --mode=development --config webpack.browser.js & rspack --mode=development --config webpack.server.js",
-    "build": "node ./build.mjs"
+    "build": "NODE_ENV=production node ./build.mjs",
+    "dev": "NODE_ENV=development node ./build.mjs"
   },
   "devDependencies": {
     "@rsbuild/core": "^0.0.24",
