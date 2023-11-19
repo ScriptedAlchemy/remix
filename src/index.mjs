@@ -45,6 +45,11 @@ export const pluginFoo = (remixOptions = {}) => ({ // Export a function that ret
         const serverBuildEntry = createServerBuildEntry(remixConfig, manifest); // Create the server build entry
         fs.writeFileSync(serverBuildModule, serverBuildEntry, 'utf8'); // Write the server build entry to the server build module
       } else {
+        // Set the entry points for the config
+        setConfig(config, 'source.entry', {
+          'entry.client': remixConfig.entryClientFilePath, // Set the client entry point to the entry client file path
+          ...getRoutes(remixConfig) // Spread the routes from the remix config
+        })
         setConfig(config, 'output.distPath.root', remixConfig.assetsBuildDirectory); // Set the root of the output distPath to the assets build directory
       }
       return config; // Return the modified config
@@ -54,10 +59,6 @@ export const pluginFoo = (remixOptions = {}) => ({ // Export a function that ret
       const remixConfig = await remixOptions; // Await the remixOptions promise
       const isModule = remixConfig.serverModuleFormat === 'esm'; // Check if the server module format is 'esm'
       if (!options.isServer) { // If the options do not include 'isServer'
-        config.entry = { // Set the entry points for the config
-          'entry.client': remixConfig.entryClientFilePath, // Set the client entry point to the entry client file path
-          ...getRoutes(remixConfig) // Spread the routes from the remix config
-        };
         setConfig(config, 'externalsType', 'module'); // Set the externals type to 'module'
         setConfig(config, 'target', 'web'); // Set the target to 'web'
         setConfig(config, 'name', 'browser'); // Set the name to 'browser'
