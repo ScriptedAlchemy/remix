@@ -59,19 +59,23 @@ export const pluginFoo = (remixOptions = {}) => ({ // Export a function that ret
       const remixConfig = await remixOptions; // Await the remixOptions promise
       const isModule = remixConfig.serverModuleFormat === 'esm'; // Check if the server module format is 'esm'
       if (!options.isServer) { // If the options do not include 'isServer'
-        setConfig(config, 'externalsType', 'module'); // Set the externals type to 'module'
         setConfig(config, 'target', 'web'); // Set the target to 'web'
         setConfig(config, 'name', 'browser'); // Set the name to 'browser'
         setConfig(config, 'output.publicPath', remixConfig.publicPath || 'auto'); // Set the public path to the remix config public path or 'auto' if it does not exist
-        setConfig(config, 'output.module', true); // Set the output module to true
-        setConfig(config, 'output.library', { type: 'module' }); // Set the output library type to 'module'
-        setConfig(config, 'output.chunkFormat', 'module'); // Set the output chunk format to 'module'
-        setConfig(config, 'output.chunkLoading', 'import'); // Set the output chunk loading to 'import'
+
+        // Rspack HMR do not support module chunk format yet
+        // ref: https://github.com/web-infra-dev/rspack/blob/37ba8d745312c05bf81ae3a1e21a19f503dcd010/crates/rspack_plugin_runtime/src/module_chunk_format.rs#L95-L97
+        // setConfig(config, 'output.module', true); // Set the output module to true
+        // setConfig(config, 'output.library', { type: 'module' }); // Set the output library type to 'module'
+        // setConfig(config, 'output.chunkFormat', 'module'); // Set the output chunk format to 'module'
+        // setConfig(config, 'output.chunkLoading', 'import'); // Set the output chunk loading to 'import'
+        // setConfig(config, 'experiments.outputModule', true); // Set the experiments output module to true
+        // setConfig(config, 'externalsType', 'module'); // Set the externals type to 'module'
+
         setConfig(config, 'output.assetModuleFilename', '_assets/[name]-[contenthash][ext]'); // Set the output asset module filename
         setConfig(config, 'output.cssChunkFilename', '_assets/[name]-[contenthash].css'); // Set the output CSS chunk filename
         setConfig(config, 'output.filename', '[name]-[contenthash].js'); // Set the output filename
         setConfig(config, 'output.chunkFilename', '[name]-[contenthash].js'); // Set the output chunk filename
-        setConfig(config, 'experiments.outputModule', true); // Set the experiments output module to true
         config.plugins.push(new RemixAssetsManifestPlugin(remixConfig)); // Push a new instance of RemixAssetsManifestPlugin to the plugins array
       } else {
         const ext = isModule ? 'mjs' : 'js'; // Set the extension to 'mjs' if the server module format is 'esm', otherwise set it to 'js'
