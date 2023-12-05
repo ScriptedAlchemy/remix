@@ -10,8 +10,8 @@
     "dev": "NODE_ENV=development node ./build.mjs"
   },
   "devDependencies": {
-    "@rsbuild/core": "^0.0.28",
-    "@rsbuild/plugin-react": "^0.0.28",
+    "@rsbuild/core": "^0.1.9",
+    "@rsbuild/plugin-react": "^0.1.9",
     "@types/node": "^20.9.1"
   },
   "dependencies": {

@@ -14,6 +14,7 @@ const serverBuildModule = './.cache/server-build.js'; // Define the path for the
 // Export pluginFoo
 export const pluginFoo = (remixOptions = {}) => ({ // Export a function that returns an object
   name: 'plugin-foo', // Name of the plugin
+
   setup(api, options) { // Setup function for the plugin
     api.onAfterBuild(async (config,options) => { // Event listener for after build event
       const remixConfig = await remixOptions; // Await the remixOptions promise
@@ -34,6 +35,7 @@ export const pluginFoo = (remixOptions = {}) => ({ // Export a function that ret
         }
       }
     });
+
     api.modifyRsbuildConfig(async (config, options) => { // Modify the Rsbuild config
       const remixConfig = await remixOptions; // Await the remixOptions promise
       // Check if the target includes 'node' or 'async-node'

@@ -1,8 +1,8 @@
 {
   "type:": "module",
   "devDependencies": {
-    "@rsbuild/core": "^0.0.28",
-    "@rsbuild/shared": "^0.0.28"
+    "@rsbuild/core": "^0.1.9",
+    "@rsbuild/shared": "^0.1.9"
   },
   "dependencies": {
     "esbuild": "^0.19.5",
