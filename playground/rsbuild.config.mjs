@@ -10,6 +10,7 @@ export default defineConfig({
   },
   server:{
     publicDir: false,
+    port: 3000,
   },
   plugins: [pluginFoo(remixConfig), pluginReact()],
 });
