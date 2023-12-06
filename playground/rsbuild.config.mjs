@@ -8,6 +8,9 @@ export default defineConfig({
   public: {
     publicDir: false
   },
+  server:{
+    publicDir: false,
+  },
   plugins: [pluginFoo(remixConfig), pluginReact()],
 });
 

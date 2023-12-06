@@ -1,25 +1,27 @@
 {
-  "version": "5578669f783de497",
-  "url": "/build/manifest-5578669F783DE497.js",
+  "version": "1867bed47903c501",
+  "url": "/build/manifest-1867BED47903C501.js",
   "entry": {
     "imports": [
-      "/build/lib-react-f52640d9e3520066.js",
-      "/build/lib-router-7cf68084ed1b740a.js",
-      "/build/709-1e02c8ac2eb87ecb.js",
-      "/build/entry.client-18b8a3d2faed38be.js",
-      "/build/root-676e1167b05c792e.js"
+      "/build/lib-react-66188ff2c5a06a0f.js",
+      "/build/lib-router-a524a71461d2b1ff.js",
+      "/build/709-a3f569f183f91c6f.js",
+      "/build/entry.client-662028472eb2ddeb.js",
+      "/build/lib-polyfill-58f882e5ef7ff609.js",
+      "/build/root-90d7f3c69f9b5c77.js"
     ],
-    "module": "/build/entry.client-18b8a3d2faed38be.js"
+    "module": "/build/entry.client-662028472eb2ddeb.js"
   },
   "routes": {
     "root": {
       "id": "root",
       "path": "",
-      "module": "/build/root-676e1167b05c792e.js",
+      "module": "/build/root-90d7f3c69f9b5c77.js",
       "imports": [
-        "/build/lib-react-f52640d9e3520066.js",
-        "/build/lib-router-7cf68084ed1b740a.js",
-        "/build/709-1e02c8ac2eb87ecb.js"
+        "/build/lib-react-66188ff2c5a06a0f.js",
+        "/build/lib-router-a524a71461d2b1ff.js",
+        "/build/lib-polyfill-58f882e5ef7ff609.js",
+        "/build/709-a3f569f183f91c6f.js"
       ],
       "hasAction": false,
       "hasLoader": true,
@@ -30,11 +32,11 @@
       "id": "routes/_index",
       "parentId": "root",
       "index": true,
-      "module": "/build/routes/_index-734a73eaeb74f139.js",
+      "module": "/build/routes/_index-3aebc4e561c22e4a.js",
       "imports": [
-        "/build/lib-react-f52640d9e3520066.js",
-        "/build/lib-router-7cf68084ed1b740a.js",
-        "/build/709-1e02c8ac2eb87ecb.js"
+        "/build/lib-react-66188ff2c5a06a0f.js",
+        "/build/lib-router-a524a71461d2b1ff.js",
+        "/build/709-a3f569f183f91c6f.js"
       ],
       "hasAction": false,
       "hasLoader": true,

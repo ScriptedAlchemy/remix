@@ -25,8 +25,12 @@ const start = async () => {
       const sr = await import('./build/index.js');
     }
   } else {
-    await client.startDevServer();
-    await server.startDevServer();
+    await client.startDevServer({
+      printURLs: false,
+    });
+    await server.startDevServer({
+      printURLs: false,
+    });
   }
 };
 
