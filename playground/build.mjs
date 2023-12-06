@@ -30,7 +30,7 @@ const start = async () => {
   });
   const server = await createRsbuild({
     target: ['node'],
-    rsbuildConfig: { ...config, server: false }
+    rsbuildConfig: { ...config}
   });
   const { serverMode, browserNodeBuiltinsPolyfill } = remixConfig; // Set the mode to the remix config mode
   if (process.env.NODE_ENV === 'production') {
