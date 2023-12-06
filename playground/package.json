@@ -4,7 +4,7 @@
   "type": "module",
   "version": "0.7.0",
   "scripts": {
-    "dev1": "npx rsbuild build",
+    "dev1": "npx rsbuild dev",
     "webapck": "rspack --mode=development --config webpack.browser.js & rspack --mode=development --config webpack.server.js",
     "build": "NODE_ENV=production node ./build.mjs",
     "dev": "NODE_ENV=development node ./build.mjs"

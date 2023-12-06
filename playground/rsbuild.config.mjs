@@ -5,6 +5,9 @@ import { readConfig } from '@remix-run/dev/dist/config.js';
 const remixConfig = readConfig();
 
 export default defineConfig({
+  public: {
+    publicDir: false
+  },
   plugins: [pluginFoo(remixConfig), pluginReact()],
 });
 
